@@ -1,34 +1,16 @@
 <?php
 
 var_dump($_GET);
+$indice = isset($_GET['numero'])? $_GET['numero'] : 0 ;
 
-$age = $_GET['age'];
-$expPermis = $_GET['exp'];
-$nbAccident = $_GET['acc'];
-$anciennete = $_GET['anc'];
+$images = ["montagne-1.webp", "montagne-2.webp", "montagne-3.jpg", "montagne-4.jpg", "montagne-5.jpg", "montagne-6.webp", "montagne-7.jpg"];
 
-$coeff = -1;
-$tarifs = ["Rouge", "Orange", "Vert", "Bleu"];
-$reponse = "Vous paierez le tarif : ";
-
-if($age < 25 && $expPermis < 2) {
-    $coeff = 0;
-} elseif(($age < 25 && $expPermis >= 2) || ($age >= 25 && $expPermis < 2)) {
-    $coeff = 1;
-} else {
-    $coeff = 2;
+$size = sizeof($images);
+$menu = "";
+for($i = 0; $i < $size; $i ++) {
+    $menu .= "<li><a href='index.php?numero=$i'> Image n° ".($i + 1)."</a></li>";
 }
 
-if($anciennete >= 5) {
-    $coeff++;
-}
-$coeff -= $nbAccident;
-
-if($coeff >= 0) {
-    $reponse .= $tarifs[$coeff];
-} else {
-    $reponse = "On ne veux pas de vous, merci, au revoir";
-}
 
 ?>
 
@@ -40,7 +22,10 @@ if($coeff >= 0) {
 </head>
 <body>
     <h1>Bonjour!</h1>
-    <p><?= $reponse ?></p>
+
+    <p><?= $menu ?></p>
+
+    <div><img src="img/<?= $images[$indice] ?>" alt=""></div>
     
 </body>
 </html>
