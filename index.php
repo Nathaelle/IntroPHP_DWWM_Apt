@@ -1,5 +1,14 @@
 <?php
 
+var_dump($_GET); // $_GET Récupére les informations transmises par GET (URL)
+
+// http://localhost/introPHP_apt/index.php?prenom=Martin&nom=Gérard&email=martin@gmail.com
+$new = [
+    'nom' => $_GET['nom'], 
+    'prenom' => $_GET['prenom'], 
+    'email'=> $_GET['email']
+];
+
 $image = "git_mug.png";
 
 $formulaire = [
@@ -10,6 +19,8 @@ $formulaire = [
     4 =>['nom' => 'Martin', 'prenom' => 'Justine', 'email'=> 'juju289@gmail']
 ];
 
+array_push($formulaire, $new);
+
 //var_dump($formulaire);
 
 // 1. Afficher tous les noms des utilisateurs dans une boucle for
@@ -17,9 +28,12 @@ $formulaire = [
 
 $nbElem = sizeof($formulaire); // Je récupère la taille du tableau
 
+$liste = "";
 for($i = 0; $i < $nbElem; $i++) {
-    var_dump($formulaire[$i]['nom']);
+    $liste .= "<li>".$formulaire[$i]['nom']."</li>";
 }
+
+//var_dump($liste);
 
 ?>
 
@@ -32,9 +46,9 @@ for($i = 0; $i < $nbElem; $i++) {
 <body>
     <h1>Bonjour!</h1>
     <p>Voici la liste des utilisateurs : </p>
-
-    <!-- Ici la liste des utilisateurs -->
-
+    <ul>
+    <?= $liste ?>
+    </ul>
     <hr>
     <p><img src="img/<?= $image ?>" alt=""></p>
 </body>
