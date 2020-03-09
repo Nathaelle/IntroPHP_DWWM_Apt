@@ -2,17 +2,33 @@
 
 var_dump($_GET);
 
-$nb1 = $_GET['nb1'];
-$nb2 = $_GET['nb2'];
+$age = $_GET['age'];
+$expPermis = $_GET['exp'];
+$nbAccident = $_GET['acc'];
+$anciennete = $_GET['anc'];
 
-// Si le nb1 est inférieur à 0 ET le nb2 est inférieur à 0, OU le nb1 supérieur à 0 ET le nb2 supérieur à 0....
-if(($nb1 < 0 && $nb2 < 0) || ($nb1 > 0 && $nb2 > 0)) { // alors.....
-    $result = "positif";
-} else { // sinon....
-    $result = "négatif";
+$coeff = -1;
+$tarifs = ["Rouge", "Orange", "Vert", "Bleu"];
+$reponse = "Vous paierez le tarif : ";
+
+if($age < 25 && $expPermis < 2) {
+    $coeff = 0;
+} elseif(($age < 25 && $expPermis >= 2) || ($age >= 25 && $expPermis < 2)) {
+    $coeff = 1;
+} else {
+    $coeff = 2;
 }
 
+if($anciennete >= 5) {
+    $coeff++;
+}
+$coeff -= $nbAccident;
 
+if($coeff >= 0) {
+    $reponse .= $tarifs[$coeff];
+} else {
+    $reponse = "On ne veux pas de vous, merci, au revoir";
+}
 
 ?>
 
@@ -24,7 +40,7 @@ if(($nb1 < 0 && $nb2 < 0) || ($nb1 > 0 && $nb2 > 0)) { // alors.....
 </head>
 <body>
     <h1>Bonjour!</h1>
-    <p>Le résultat sera <?= $result ?></p>
+    <p><?= $reponse ?></p>
     
 </body>
 </html>
