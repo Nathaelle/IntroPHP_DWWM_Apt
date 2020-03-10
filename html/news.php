@@ -1,0 +1,3 @@
+<h2>Les news</h2>
+
+<p class="news">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum ipsam distinctio inventore quia, quasi doloremque perferendis quaerat quisquam sunt consequatur alias nobis praesentium, unde nulla aut adipisci doloribus. Quaerat quisquam pariatur facilis tenetur? Vero nulla corporis qui eius, fugiat at deleniti aspernatur ad doloremque labore! Provident tenetur, labore animi eius dolorum nobis nostrum adipisci cumque enim sapiente excepturi dolores incidunt odit expedita dignissimos. Libero sint delectus ipsum id dolore!</p>
